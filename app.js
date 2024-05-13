@@ -1,12 +1,65 @@
+const express = require("express")
 const say = require('say');
+const fs = require('fs');
 
-// Dönüştürmek istediğiniz metin
-const metin = 'After detecting a critical issue, the system automatically aborted the operation to prevent further complications';
+const app = express()
 
-// Metni sese dönüştür 
-say.export(metin,null, 1, 'ses.mp3', (hata) => {
-  if (hata) {
-    return console.error('Hata oluştu:', hata);
-  }
-  console.log('Ses dosyası başarıyla oluşturuldu!');
-});
+app.use(express.json())
+
+app.get("/", async (req, res) => {
+
+
+  const vocabulary = 'Abort';
+  const folderPath = './' + vocabulary;
+  const text = 'The program encountered an error and had to abort the process';
+  const level = "B1";
+
+
+  // fs.mkdirSync(folderPath, (err) => {
+  //   if (err) {
+  //     console.error('was not make folder:', err);
+  //     return;
+  //   }
+
+  //   say.export(text, null, 0.75, `${folderPath}/${vocabulary}${level}.mp3`, (error) => {
+  //     if (error) {
+  //       return console.error("Error: ",error);
+  //     }
+  //   });
+  // });
+
+  fs.stat(vocabulary, (err, stats) => {
+    if (err) {
+      if (err.code === 'ENOENT') {
+        fs.mkdirSync(folderPath, (err) => {
+          if (err) {
+            console.error('was not make folder:', err);
+            return;
+          }
+
+          say.export(text, null, 0.75, `${folderPath}/${vocabulary}${level}.mp3`, (error) => {
+            if (error) {
+              return console.error("Error: ", error);
+            }
+          });
+        });
+      } else {
+        console.error('Bir hata oluştu:', err);
+      }
+    } else {
+      say.export(text, null, 0.75, `${folderPath}/${vocabulary}${level}.mp3`, (error) => {
+        if (error) {
+          return console.error("Error: ", error);
+        }
+      });
+    }
+  });
+  
+  res.send("işlem başarılı")
+})
+
+
+
+app.listen(8000, () => {
+  console.log("convert api is running on port 8000")
+})
