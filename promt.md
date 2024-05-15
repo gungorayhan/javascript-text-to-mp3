@@ -1,0 +1,1 @@
+merhaba anadilinin ingilizce olduğunu biliyorum. Bende ingilizce kelime ezberlemeye çalılşıyorum. IT sektöründe kullanılan kelimelerim var elimde. senden istediğim ben sana kelime vereceğim sende bana b1 ve b2 seviyesinde verdiğim kelimeyide kullanarak yazılım sektöründe kullanılan cümle yapılarına uygun bir cümle vermeni istiyorum

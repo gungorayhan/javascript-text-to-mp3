@@ -6,13 +6,13 @@ const app = express()
 
 app.use(express.json())
 
-app.get("/", async (req, res) => {
+app.post("/convert", async (req, res) => {
 
-
-  const vocabulary = 'Abort';
+const {vocabulary,text,level} = req.body;
+  // const vocabulary = 'Abort';
   const folderPath = './' + vocabulary;
-  const text = 'The program encountered an error and had to abort the process';
-  const level = "B1";
+  // const text = 'The program encountered an error and had to abort the process';
+  // const level = "B1";
 
 
   // fs.mkdirSync(folderPath, (err) => {
