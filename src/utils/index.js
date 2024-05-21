@@ -24,4 +24,4 @@ const convertTextVocabularySchema = (schema) => {
 
 
 
-module.exports = convertTextVocabularySchema
+module.exports = {convertTextVocabularySchema}
