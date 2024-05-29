@@ -1,0 +1,6 @@
+@echo off
+echo Starting Node.js server...
+start "" "cmd.exe" /k "cd /d %~dp0 && npm run start"
+timeout /t 5 /nobreak >nul
+echo Opening Google Chrome...
+start "" "chrome" "http://localhost:8000"

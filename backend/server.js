@@ -7,6 +7,7 @@ const path =  require("path")
 async function StartServer() {
     const app = express()
     const __dirname = path.resolve();
+    
     await dbConnect()
 
     await App(app)
