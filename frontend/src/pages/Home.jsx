@@ -72,15 +72,7 @@ const Home = () => {
                 }
             </select>
             <button onClick={() => handleSpeak()}>Speak</button> */}
-            <div style={{
-                // display: 'flex',
-                // flexDirection: 'column',
-                // backgroundColor: 'lightgray',
-                // padding: '20px',
-                // borderRadius: '8px',
-                // boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-                // marginBottom: '20px',
-            }}>
+            <div className="grid-item">
 
                 {vocabulary.map((item, index) => {
                     return (
@@ -105,7 +97,7 @@ const Home = () => {
                                                     {text.textVocabulary.map((textVocabulary, index) => {
                                                         return (
                                                             <div key={index}>
-                                                                <span>{textVocabulary.vocabulary}:{textVocabulary.mean}</span>
+                                                                <span><button style={{margin:0, padding:'2px',width:'50px',height:'30px', fontSize:'10px' }} onClick={()=>handleSpeakText(textVocabulary.vocabulary)}>Listen</button>{textVocabulary.vocabulary}:{textVocabulary.mean}</span>
                                                             </div>
                                                         )
                                                     })}
